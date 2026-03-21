@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: dbuni
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn dbuni.wsgi:application"
+    envVars:
+      - key: DEBUG
+        value: False

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="title">Brands</h2>
+
+<div class="grid">
+
+{% for brand in brands %}
+<a href="{% url 'brand_detail' brand.id %}" class="card">
+
+  <div class="card-top">
+    <img src="{{ brand.image.url }}" alt="{{ brand.name }}" class="brand-image">
+  </div>
+
+  <div class="card-body">
+    <h3>{{ brand.name }}</h3>
+    <p class="brand-desc">{{ brand.description }}</p>
+  </div>
+
+</a>
+{% endfor %}
+</div>
+{% endblock %}
+
