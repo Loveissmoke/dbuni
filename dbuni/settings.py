@@ -13,7 +13,14 @@ DEBUG = False
 # ALLOWED HOSTS
 # -------------------------
 
-ALLOWED_HOSTS = ['dbuni.onrender.com']
+
+#ALLOWED_HOSTS = ['dbuni.onrender.com','beki.com.et','www.beki.com.et']
+
+ALLOWED_HOSTS = os.getenv(
+    "ALLOWED_HOSTS",
+    "dbuni.onrender.com"
+).split(",")
+
 # -------------------------
 # APPS
 # -------------------------
