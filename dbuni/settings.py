@@ -5,7 +5,7 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-secret")
-DEBUG = os.getenv("DEBUG", "False").lower() in {"1", "true", "yes"}
+DEBUG = False
 
 # -------------------------
 # ALLOWED HOSTS
@@ -74,7 +74,7 @@ DATABASES = {
 # -------------------------
 # STATIC
 # -------------------------
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
