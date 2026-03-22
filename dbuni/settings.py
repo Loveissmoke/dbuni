@@ -74,7 +74,7 @@ DATABASES = {
 # -------------------------
 # STATIC
 # -------------------------
-STATIC_URL = "/static/"
+STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
