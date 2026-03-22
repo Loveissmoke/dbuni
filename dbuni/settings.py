@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 import dj_database_url
+import cloudinary
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,6 +26,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "store",
     "colorfield",
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 # -------------------------
@@ -63,13 +67,28 @@ WSGI_APPLICATION = "dbuni.wsgi.application"
 # -------------------------
 # DATABASE (Neon)
 # -------------------------
-DATABASES = {
-    "default": dj_database_url.config(
-        default=os.getenv("DATABASE_URL"),
-        conn_max_age=600,
-        ssl_require=True,
-    )
-}
+#DATABASES = {
+#    "default": dj_database_url.config(
+#        default=os.getenv("DATABASE_URL"),
+#        conn_max_age=600,
+#        ssl_require=True,
+#    )
+#}
+
+if os.getenv("DATABASE_URL"):
+    DATABASES = {
+        "default": dj_database_url.config(conn_max_age=600, ssl_require=True)
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+
+
+
 
 # -------------------------
 # STATIC
@@ -79,10 +98,14 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
 
 
+cloudinary.config(
+    cloud_name="dey1qgjx4",
+    api_key="574555924251958",
+    api_secret="H1gxcosPms_95i40QTyKc7maXQA",
+)
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # -------------------------
 # SECURITY
 # -------------------------
@@ -97,3 +120,4 @@ if not DEBUG:
 # DEFAULT PK
 # -------------------------
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
