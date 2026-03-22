@@ -10,17 +10,8 @@ DEBUG = os.getenv("DEBUG", "False").lower() in {"1", "true", "yes"}
 # -------------------------
 # ALLOWED HOSTS
 # -------------------------
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
-RENDER_EXTERNAL_HOSTNAME = os.getenv("RENDER_EXTERNAL_HOSTNAME")
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-
-if DEBUG:
-    ALLOWED_HOSTS += ["127.0.0.1", "localhost"]
-
-ALLOWED_HOSTS = [h for h in ALLOWED_HOSTS if h]
-
+ALLOWED_HOSTS = ['dbuni.onrender.com']
 # -------------------------
 # APPS
 # -------------------------
