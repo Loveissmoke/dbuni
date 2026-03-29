@@ -1,6 +1,6 @@
 asgiref==3.11.1
 dj-database-url==3.1.2
-Django==6.0.3
+Django
 django-colorfield==0.14.0
 gunicorn==25.1.0
 packaging==26.0
